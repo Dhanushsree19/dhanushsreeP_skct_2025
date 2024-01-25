@@ -64,6 +64,9 @@ class Result {
 Answer:
     public static int gameWithCells(int n, int m) {
     // Write your code here
+        int row=(n+1)/2;
+        int column=(m+1)/2;
+        return (row*column);
 
     }
 
