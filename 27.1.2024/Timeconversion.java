@@ -1,3 +1,4 @@
+"""
 Given a time in -hour AM/PM format, convert it to military (24-hour) time.
 
 Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
@@ -34,3 +35,57 @@ Sample Input 0
 Sample Output 0
 
 19:05:45
+  """
+  Answer:
+  import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+class Result {
+
+    /*
+     * Complete the 'timeConversion' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING s as parameter.
+     */
+
+    public static String timeConversion(String s) {
+    // Write your code here
+        DateFormat hours12Format = new SimpleDateFormat("hh:mm:ssaa");
+        DateFormat hours24Format = new SimpleDateFormat("HH:mm:ss");
+        String result = null;
+        
+        try{
+            Date parsed12HoursDate = hours12Format.parse(s);
+            result = hours24Format.format(parsed12HoursDate);
+        }catch(ParseException e) {
+            result = "Error has occured while formatting the date!";
+        }
+        
+        return result;
+    
+
+    }
+
+}
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = bufferedReader.readLine();
+
+        String result = Result.timeConversion(s);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
